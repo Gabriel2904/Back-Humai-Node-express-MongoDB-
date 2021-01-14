@@ -24,4 +24,9 @@ const modify = async (id, obj) =>
     .collection(CURSOS_COLLECTION)
     .updateOne({ _id: `ObjectId(${id})` }, { $set: `${obj}` });
 
-module.exports = { get, getSingle, create, modify };
+const deleteById = async ({ conditions = {}, fields = {} }) =>
+  (await pool())
+    .collection(CURSOS_COLLECTION)
+    .findOneAndDelete(conditions, { projection: fields });
+
+module.exports = { get, getSingle, create, modify, deleteById };
