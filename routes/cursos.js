@@ -30,15 +30,15 @@ const create = (req, res) => {
     .catch((e) => res.sendStatus(500));
 };
 
-const deleteById = (req, res) =>
+const remove = (req, res) =>
   model
-    .deleteById(req.params.id)
+    .del(req.params.id)
     .then((response) => res.json(response))
     .catch((e) => res.sendStatus(500));
 
 router.get("/all", all);
 router.get("/single/:id", single);
 router.post("/create", create);
-router.get("/delete/:id", deleteById);
+router.get("/delete/:id", remove);
 
 module.exports = router;
