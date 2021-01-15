@@ -1,4 +1,4 @@
-const { pool } = require("./../utils/db");
+const { pool, ObjectID } = require("./../utils/db");
 const CURSOS_COLLECTION = "cursos";
 
 const get = async ({ conditions = {}, fields = {} }) =>
@@ -24,14 +24,10 @@ const modify = async (id, obj) =>
     .collection(CURSOS_COLLECTION)
     .updateOne({ _id: `ObjectId(${id})` }, { $set: `${obj}` });
 
-const del = async (id, obj, conditions = {}, fields = {}) =>
+//El Delete aun no funciona
+/*const del = async (id, conditions = { ObjectID }) =>
   (await pool())
     .collection(CURSOS_COLLECTION)
-    .deleteOne(
-      conditions,
-      { projection: fields },
-      { _id: `ObjectId(${id})` },
-      { $set: `${obj}` }
-    );
+    .deleteOne(conditions, { _id: `ObjectId(${id})` });*/
 
 module.exports = { get, getSingle, create, modify, del };

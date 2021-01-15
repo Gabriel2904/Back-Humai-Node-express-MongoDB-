@@ -1,4 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
+const ObjectID = require('mongodb').ObjectID;
 
 const pool = async () => {
   try {
@@ -9,4 +10,5 @@ const pool = async () => {
     console.log(err.stack);
   }
 };
-module.exports = { pool };
+
+module.exports = { pool, ObjectID };

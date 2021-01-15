@@ -7,12 +7,9 @@ const dotenv = require('dotenv')
 dotenv.config();
 
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
-const cursadasRouter = require("./routes/cursadas");
 const cursosRouter = require("./routes/cursos");
 const investigacionesRouter = require("./routes/investigaciones");
-const investigacionRouter = require("./routes/investigacion");
 const consultoriasRouter = require("./routes/consultorias");
 const docentesRouter = require("./routes/docentes");
 const perfilRouter = require("./routes/docentes");
@@ -32,12 +29,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/auth", authRouter);
-app.use("/cursadas", cursadasRouter);
 app.use("/cursos", cursosRouter);
 app.use("/investigaciones", investigacionesRouter);
-app.use("/innvestigacion", investigacionRouter);
 app.use("/consultorias", consultoriasRouter);
 app.use("/docentes", docentesRouter);
 app.use("/perfil", perfilRouter);

@@ -9,11 +9,11 @@ const schemas = {
   create: Joi.object().keys({
     nombre: Joi.string().min(5).max(30).required().messages({ messageCursos }),
     modalidad: Joi.string()
-      .min(15)
+      .min(6)
       .max(30)
       .required()
       .messages({ messageCursos }),
-    valor: Joi.number().min(3).max(5).required().messages({ messageCursos }),
+    valor: Joi.number().min(3).max(4).required().messages({ messageCursos }),
     fecha_inicio: Joi.date()
       .required()
       .messages({ "any.require": "El campo es obligatorio" }),
