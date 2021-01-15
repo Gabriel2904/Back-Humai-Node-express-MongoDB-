@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const model = require("./../models/cursos");
+const { validateCreate, validateModify } = require("./../middlewares/cursos");
 
 const all = async (req, res) =>
   model
@@ -30,6 +31,12 @@ const create = (req, res) => {
     .catch((e) => res.sendStatus(500));
 };
 
+const modify = (req, res) =>
+  model
+    .modify(req.params.id, req.body)
+    .then((response) => res.json(response))
+    .catch((e) => res.json(e));
+
 const remove = (req, res) =>
   model
     .del(req.params.id)
@@ -38,7 +45,8 @@ const remove = (req, res) =>
 
 router.get("/all", all);
 router.get("/single/:id", single);
-router.post("/create", create);
+router.post("/create", validateCreate, create);
+router.put("/modify", validateModify, modify);
 router.get("/delete/:id", remove);
 
 module.exports = router;
