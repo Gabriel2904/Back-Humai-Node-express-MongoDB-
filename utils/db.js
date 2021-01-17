@@ -1,14 +1,9 @@
-const MongoClient = require("mongodb").MongoClient;
-const ObjectID = require('mongodb').ObjectID;
+const mongoose = require("mongoose");
 
-const pool = async () => {
-  try {
-    return (await MongoClient.connect("mongodb://localhost:27017/")).db(
-      "DBHumai"
-    );
-  } catch (err) {
-    console.log(err.stack);
-  }
-};
-
-module.exports = { pool, ObjectID };
+mongoose
+  .connect("mongodb://localhost:27017/", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  })
+  .then((db) => console.log("DB is connected"))
+  .catch((err) => console.error(err));
