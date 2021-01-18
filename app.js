@@ -3,10 +3,12 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const dotenv = require("dotenv");
 const compression = require("compression");
 const cors = require("cors");
-const dotenv = require("dotenv");
+const { dbConnection } = require("./utils/db");
 dotenv.config();
+dbConnection();
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");

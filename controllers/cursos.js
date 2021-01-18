@@ -1,4 +1,4 @@
-const Cursos = require("./../models/cursos");
+const cursos = require("./../models/cursos");
 
 const all = async (_, res) => {
   try {
@@ -24,16 +24,15 @@ const single = async (req, res) => {
 const find = async (id = null) => {
   console.log(id);
   const requiredData = ["name", "lastname", "phone"];
-  if (id) return await Cursos.findById(id).populate("user", requiredData);
-  return await Cursos.find().populate("user", requiredData);
+  if (id) return await cursos.findById(id).populate("user", requiredData);
+  return await cursos.find().populate("user", requiredData);
 };
-
 
 const create = async (req, res) => {
   try {
-    const newCurso = new Cursos(req.body);
-    
-    const data = await newCurso.save();
+    const curso = new cursos(req.body);
+
+    const data = await curso.save();
     res.status(201).json({ ok: true, msg: "Curso creado", data });
   } catch (e) {
     console.error(e);

@@ -1,9 +1,17 @@
 const mongoose = require("mongoose");
 
-mongoose
-  .connect("mongodb://localhost:27017/", {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  })
-  .then((db) => console.log("DB is connected"))
-  .catch((err) => console.error(err));
+const dbConnection = async () => {
+  try {
+    await mongoose.connect(process.env.DB_CNN, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    });
+    console.log("Base de datos Online");
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+module.exports = { dbConnection };
