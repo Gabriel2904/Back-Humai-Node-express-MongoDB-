@@ -13,7 +13,7 @@ const schemas = {
       .max(30)
       .required()
       .messages({ messageCursos }),
-    valor: Joi.number().min(3).max(4).required().messages({ messageCursos }),
+    valor: Joi.number().required().messages({ messageCursos }),
     fecha_inicio: Joi.date()
       .required()
       .messages({ "any.require": "El campo es obligatorio" }),
@@ -29,7 +29,7 @@ const schemas = {
       .max(20)
       .required()
       .messages({ messageCursos }),
-    valor: Joi.number().min(3).max(5).required().messages({ messageCursos }),
+    valor: Joi.number().required().messages({ messageCursos }),
     fecha_inicio: Joi.date()
       .required()
       .messages({ "any.require": "El campo es obligatorio" }),
