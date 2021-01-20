@@ -1,5 +1,3 @@
-const { number } = require("@hapi/joi");
-const { string } = require("joi");
 const { Schema, model } = require("mongoose");
 
 const docenteSchema = Schema(
@@ -13,11 +11,11 @@ const docenteSchema = Schema(
       required: true,
     },
     mail: {
-      type: string,
+      type: String,
       required: true,
     },
     telefono: {
-      type: number,
+      type: Number,
       required: true,
     },
     area: {
