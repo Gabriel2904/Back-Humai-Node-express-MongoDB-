@@ -10,7 +10,7 @@ const schemas = {
     nombre: Joi.string().min(2).max(30).required().messages({ message }),
     apellido: Joi.string().min(2).max(30).optional().messages({ message }),
     mail: Joi.string().email().required().messages({ message }),
-    telefono: Joi.string().optional().messages({ message }),
+    telefono: Joi.number().optional().messages({ message }),
     area: Joi.string().min(2).max(20).max(30).required().messages({ message }),
   }),
 
@@ -18,7 +18,7 @@ const schemas = {
     nombre: Joi.string().min(2).max(30).optional().messages({ message }),
     apellido: Joi.string().min(2).max(30).optional().messages({ message }),
     mail: Joi.string().email().optional().messages({ message }),
-    telefono: Joi.string().optional().messages({ message }),
+    telefono: Joi.number().optional().messages({ message }),
     area: Joi.string().min(2).max(20).max(30).required().messages({ message }),
   }),
 };
