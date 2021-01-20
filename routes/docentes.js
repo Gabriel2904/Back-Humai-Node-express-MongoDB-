@@ -1,12 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {
-  create,
-  all,
-  single,
-  del,
-  modify,
-} = require("./../controllers/docentes");
+const { create, all, single, del, modify } = require("./../controllers/docentes");
 const { validateCreate, validateModify } = require("./../middlewares/docentes");
 
 router.get("/", all);
