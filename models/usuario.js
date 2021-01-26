@@ -1,22 +1,32 @@
 const { Schema, model } = require("mongoose");
+const bcrypt = require("bcryptjs");
 
-new Schema({
-  usurname: {
-    type: String,
-    unique: true,
-  },
-  email: {
-    String,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  roles: [
-    {
-      ref: "role",
-      type: Schema.Types.ObjectId,
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      unique: true,
     },
-  ],
-});
+    email: {
+      type: String,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    roles: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Role",
+      },
+    ],
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
+
+
+module.exports = model("User", userSchema);
