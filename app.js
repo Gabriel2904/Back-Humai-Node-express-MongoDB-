@@ -7,6 +7,8 @@ const dotenv = require("dotenv");
 const compression = require("compression");
 const cors = require("cors");
 const { dbConnection } = require("./utils/db");
+const { createRoles } = require("./libs/initialSetup");
+createRoles();
 dotenv.config();
 dbConnection();
 
