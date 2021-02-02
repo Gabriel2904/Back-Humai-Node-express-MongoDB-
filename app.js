@@ -15,12 +15,7 @@ dbConnection();
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const cursosRouter = require("./routes/cursos");
-const investigacionesRouter = require("./routes/investigaciones");
-const consultoriasRouter = require("./routes/consultorias");
 const docentesRouter = require("./routes/docentes");
-const perfilRouter = require("./routes/docentes");
-const registroRouter = require("./routes/registro");
-const personasRouter = require("./routes/personas");
 
 const app = express();
 
@@ -39,12 +34,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/cursos", cursosRouter);
-app.use("/investigaciones", investigacionesRouter);
-app.use("/consultorias", consultoriasRouter);
 app.use("/docentes", docentesRouter);
-app.use("/perfil", perfilRouter);
-app.use("/resgistro", registroRouter);
-app.use("/personas", personasRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

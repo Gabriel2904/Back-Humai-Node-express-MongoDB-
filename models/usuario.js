@@ -5,6 +5,15 @@ const userSchema = new Schema(
     username: {
       type: String,
       unique: true,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    lastname: {
+      type: String,
+      required: true,
     },
     email: {
       type: String,
@@ -28,4 +37,7 @@ const userSchema = new Schema(
   }
 );
 
+const comparePassword = async (password, receivedPassword) => {
+  return await bcrypt.compare(password, receivedPassword);
+};
 module.exports = model("User", userSchema);
