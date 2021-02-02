@@ -16,7 +16,7 @@ const signUp = async (req, res) => {
       email,
       password: hash(password),
     });
-    
+
     //Checking Roles
     if (req.body.roles) {
       const foundRoles = await Role.find({ name: { $in: roles } });
@@ -25,7 +25,7 @@ const signUp = async (req, res) => {
       const role = await Role.findOne({ name: "user" });
       newUser.roles = [role._id];
     }
-    
+
     //Savingf User Obj MongoDB
     const savedUser = await newUser.save();
     console.log(savedUser);
@@ -41,7 +41,11 @@ const signUp = async (req, res) => {
 };
 
 const signIn = async (req, res) => {
-  res.json("signIn");
+  const userFound = await User.findOne({ email: req.body.email }).populate()
+  if (!userFound)
+    return res.status(400).json({ message: "Usuario no encontrado" });
+  console.log(userFound);
+  res.json({ token: "" });
 };
 
 module.exports = { signIn, signUp };
