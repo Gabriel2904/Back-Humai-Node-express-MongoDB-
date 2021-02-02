@@ -3,6 +3,7 @@ const User = require("./../models/usuario");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const privateKey = fs.readFileSync("./keys/private.pem");
+const Roles = require("./../models/roles");
 
 const validateCreate = (req, res, next) => {
   const { error, value } = schemas.create.validate(req.body);
@@ -36,4 +37,17 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-module.exports = { validateCreate, validateModify, verifyToken };
+const isModerator = async (req, res, next) => {
+  const user = await User.findById(req.userId);
+  const roles = await Roles.find({ _id: { $in: user.roles } });
+  for (let i = 0; i < roles.length; i++) {
+    if (roles[i].name === "moderator") {
+      next();
+      return;
+    }
+  }
+
+  return res.status(403).json({ message: "requiere ser moderador" });
+};
+
+module.exports = { validateCreate, validateModify, verifyToken, isModerator };
