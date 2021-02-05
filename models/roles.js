@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose");
-const role = ["user", "admin", "moderator"];
+
+const roleArray = ["user", "admin", "moderator"];
+
 const roleSchema = new Schema(
   {
     name: String,
@@ -9,4 +11,4 @@ const roleSchema = new Schema(
   }
 );
 
-module.exports = model("Role", roleSchema);
+module.exports = model("Role", roleSchema, roleArray);
