@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 
-const roleArray = ["user", "admin", "moderator"];
 
 const roleSchema = new Schema(
   {
@@ -11,4 +10,4 @@ const roleSchema = new Schema(
   }
 );
 
-module.exports = model("Role", roleSchema, roleArray);
+module.exports = model("Role",  roleSchema);
