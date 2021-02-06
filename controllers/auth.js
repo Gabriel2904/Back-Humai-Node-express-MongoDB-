@@ -8,10 +8,12 @@ const privateKey = fs.readFileSync("./keys/private.pem");
 const signUp = async (req, res) => {
   try {
     //Request Body
-    const { username, email, password, roles } = req.body;
+    const { username, name, lastname, email, password, roles } = req.body;
     //Create a new User Object
     const newUser = new User({
       username,
+      name,
+      lastname,
       email,
       password: hash(password),
     });
