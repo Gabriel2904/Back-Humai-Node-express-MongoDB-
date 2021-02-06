@@ -61,3 +61,4 @@ const del = async (req, res) => {
 };
 
 module.exports = { all, single, create, modify, del };
+ 
