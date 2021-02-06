@@ -1,6 +1,6 @@
 const User = require("./../models/usuario");
 const Role = require("./../models/roles");
-const { find } = require("./../models/usuario");
+
 
 const createUser = async (req, res) => {
   try {
@@ -52,6 +52,13 @@ const single = async (req, res) => {
     console.error(e);
     res.status(500).json({ ok: false, e });
   }
+};
+
+const find = async (id = null) => {
+  console.log(id);
+  const requiredData = ["username","name", "lastname", " mail", "password", "role"];
+  if (id) return await User.findById(id).populate("user", requiredData);
+  return await User.find().populate("user", requiredData);
 };
 
 const modify = async (req, res) => {
