@@ -1,6 +1,4 @@
 const { schemas } = require("./schemas/user");
-const User = require("./../models/usuario");
-const fs = require("fs");
 
 const validateCreate = (req, res, next) => {
   const { error, value } = schemas.create.validate(req.body);
