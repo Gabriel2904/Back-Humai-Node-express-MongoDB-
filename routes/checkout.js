@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { createPreference } = require("./../controllers/checkout");
+const { merPa } = require("./../controllers/checkout");
 
 /* GET home page. */
-router.post("/", );
+router.post("/", merPa );
 
 module.exports = router;
