@@ -17,6 +17,7 @@ const authRouter = require("./routes/auth");
 const cursosRouter = require("./routes/cursos");
 const docentesRouter = require("./routes/docentes");
 const usersRouter = require("./routes/users");
+const checkoutRouter = require("./routes/checkout");
 
 const app = express();
 
@@ -37,7 +38,7 @@ app.use("/auth", authRouter);
 app.use("/cursos", cursosRouter);
 app.use("/docentes", docentesRouter);
 app.use("/users", usersRouter);
-
+app.use("/checkout", checkoutRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
