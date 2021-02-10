@@ -30,7 +30,7 @@ const signUp = async (req, res) => {
     console.log(savedUser);
     //Create a Token
     const token = jwt.sign({ id: savedUser._id }, privateKey, {
-      expiresIn: 3600,
+      expiresIn: 14000,
     });
     res.json({ token });
   } catch (e) {
