@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.post("/send-email", (req, res) => {
+  console.log(req.body);
+  res.send("recevided");
 });
 
 module.exports = router;
