@@ -15,12 +15,12 @@ const send = async ({
       tls: { rejectUnauthorized: false },
     });
 
-    const mail = {
+    const mail = transporter.sendMail( {
       from: "Gabriel Paez <gabriel2904@hotmail.com>",
       to,
       subject,
       html,
-    };
+    });
     const { messageId } = await transporter.sendMail(mail);
     return messageId;
   } catch (e) {

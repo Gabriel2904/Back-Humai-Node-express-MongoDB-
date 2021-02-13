@@ -4,6 +4,7 @@ const Role = require("./../models/roles");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const privateKey = fs.readFileSync("./keys/private.pem");
+const { send } = require("./../services/mail");
 
 const signUp = async (req, res) => {
   try {
@@ -33,6 +34,14 @@ const signUp = async (req, res) => {
       expiresIn: 14000,
     });
     res.json({ token });
+
+    const messageId = await send({
+      to: email,
+      subject: "Gracias por Registrarse a Humai",
+      html: "<h1>Holo, de Humai 👽 </h1>",
+    });
+    return messageId;
+    console.log(messageId);
   } catch (e) {
     console.error(e);
     res.status(500).json({ ok: false, e });
@@ -57,7 +66,7 @@ const signIn = async (req, res) => {
       .json({ token: null, message: "Contraseña invalida" });*/
 
   const token = jwt.sign({ id: userFound._id }, privateKey, {
-    expiresIn: 3600,
+    expiresIn: 14000,
   });
 
   console.log(userFound);
