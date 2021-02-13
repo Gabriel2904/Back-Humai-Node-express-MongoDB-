@@ -41,7 +41,6 @@ const signUp = async (req, res) => {
       html: "<h1>Holo, de Humai 👽 </h1>",
     });
     return messageId;
-    console.log(messageId);
   } catch (e) {
     console.error(e);
     res.status(500).json({ ok: false, e });
