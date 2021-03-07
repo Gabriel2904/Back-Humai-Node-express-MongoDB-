@@ -14,7 +14,7 @@ const merPa = async (req, res) => {
       items: [
         {
           title: "Mi producto",
-          unit_price: 100,
+          unit_price: 2500,
           quantity: 1,
         },
       ],
