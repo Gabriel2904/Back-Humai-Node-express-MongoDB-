@@ -1,27 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Humai" />
+    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Instituto Humai" />
+    <meta prefix="og: http://ogp.me/ns#" property="og:description"
+        content="Trabajando por la Inteligencia Artificial en función del bienestar social" />
+    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="static/logos/isologotipo-instituto.png" />
+    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://ihum.ai/" />
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                "gtm.start": new Date().getTime(),
+                event: "gtm.js",
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-PHGWXMD");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <title>HUMAI</title>
+
+    <!-- CSS  -->
+    <script src="https://kit.fontawesome.com/04d494b3e0.js" crossorigin="anonymous"></script>
     <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/litera/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="./stylesheets/style.css" />
-    <title>Succes</title>
-  </head>
-  <body>
-    <div class="container p-4">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="card">
-            <div class="card body">
-              <h1>Holo, Gracias por registrate</h1>
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/graph.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <link rel="icon" type="image/png" href="static/logos/favico.png" sizes="32x32" />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            $("#submitnews").click(function (event) {
+                var data = {};
+                data["emailnews"] = $("#emailnews").val();
+
+                $("#submitnews").prop("disabled", true);
+                $("#submitnews").text("¡Excelente!");
+
+                $.ajax({
+                    type: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    url: "https://ihum.ai/data-server/postdata",
+                    data: {
+                        data: JSON.stringify(data),
+                    },
+                    timeout: 600000,
+                    success: function (data) {
+                        console.log("DONE");
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    },
+                });
+            });
+
+            $("#submitcontact").click(function (event) {
+                var data = {};
+                data["name"] = $("#name").val();
+                data["last_name"] = $("#last_name").val();
+                data["email"] = $("#email").val();
+                data["query"] = $("#textarea").val();
+
+                $("#submitcontact").prop("disabled", true);
+                $("#submitcontact").text("¡Gracias!");
+
+                $.ajax({
+                    type: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    url: "https://ihum.ai/data-server/postdata",
+                    data: {
+                        data: JSON.stringify(data),
+                    },
+                    timeout: 600000,
+                    success: function (data) {
+                        console.log("DONE");
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    },
+                });
+            });
+        });
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) :
+                    n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+        })(
+            window,
+            document,
+            "script",
+            "https://connect.facebook.net/en_US/fbevents.js"
+        );
+        fbq("init", "1780340628783403");
+        fbq("track", "PageView");
+    </script>
+    <noscript>
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=1780340628783403&ev=PageView
+    &noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHGWXMD" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="particles-js"></div>
+
+    <div id="Top"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Top").load("/top-2.html");
+        });
+    </script>
+
+    <section id="Contribuciones">
+        <div class="contribuciones-distintas-clases">
+            <div class="container">
+                <div class="row center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 m12 xl12">
+                                <h2 class="orange-text text-darken-1" style="text-align: center;">Contribuciones</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center-align courses-info">
+                        <p>
+                            LLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                            enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                            nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
+                </div>
+                <div class="card z-depth-4 hoverable">
+                    <div class="card-content">
+                        <div class="segmentacion clases-contribuciones row">
+                            <div class="col s12 l4">
+                                <img src="EMOJIS/groso.png" class="clases-img" >
+                                <h2>$0</h1>
+                                    <p class="contribuciones-clases-title">Colaborador</p>
+                                    <p class="clases-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Sint commodi inventore minus consectetur vel debitis sit illum? Ratione dolorem
+                                        officiis recusandae, quisquam, culpa incidunt, soluta iste expedita unde iusto
+                                        tempora!</p>
+                            </div>
+                            <div class="col s12 l4">
+                                <img src="EMOJIS/me importa.png" class="clases-img" >
+                                <h2>$200</h1>
+                                    <p class="contribuciones-clases-title">Colaborador Comprometido</p>
+                                    <p class="clases-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Sint commodi inventore minus consectetur vel debitis sit illum? Ratione dolorem
+                                        officiis recusandae, quisquam, culpa incidunt, soluta iste expedita unde iusto
+                                        tempora!</p>
+                            </div>
+                            <div class="col s12 l4">
+                                <img src="EMOJIS/fiesta.png" class="clases-img" >
+                                <h2>$300</h1>
+                                    <p class="contribuciones-clases-title">Amigx</p>
+                                    <p class="clases-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Sint commodi inventore minus consectetur vel debitis sit illum? Ratione dolorem
+                                        officiis recusandae, quisquam, culpa incidunt, soluta iste expedita unde iusto
+                                        tempora!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="">
+                        <div class="card z-depth-4 hoverable">
+                            <!-- <div class="card-image">
+                              <img src="static/otros/segmentaciondemercado.png">
+                              <br>
+                          </div> -->
+                            <div class="card-content">
+                                <!-- <span class="card-title" style="line-height: 25px;">Segmentación de mercado</span>
+                              <p style="line-height: 150%;">En cualquier actividad comercial es necesario conocer a sus clientes. La investigación en psicología y neurociencias en conjunción al aprendizaje automático otorga posibilidades inauditas personalizar servicios</p> -->
+                                <div class="segmentacion row justify-content-center">
+                                    <div class="forms">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroup-sizing-sm">Nombre y
+                                                    Apellido</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Small"
+                                                aria-describedby="inputGroup-sizing-sm" />
+                                        </div>
+                                        <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Small"
+                                                aria-describedby="inputGroup-sizing-sm" />
+                                        </div>
+                                    </div>
+                                    <div class="payment col s12 l8">
+                                        <div class="metodo-de-pago">
+                                            <p>Quiero contribuir a traves de:</p>
+                                            <div class="metodo-de-pago__buttons donate-now">
+                                                <input class="contribucionesButton" type="radio" id="mercadopago"
+                                                    name="type" />
+                                                <label for="mercadopago">Mercado Pago<img class="logo"
+                                                        src="https://ihum.ai/static/icons/meli.png" alt=""></label>
+                                                <input class="contribucionesButton" type="radio" id="paypal"
+                                                    name="type" />
+                                                <label for="paypal">Paypal<img class="logo"
+                                                        src="https://ihum.ai/static/icons/paypal.png" alt=""></label>
+                                            </div>
+                                        </div>
+                                        <div class="importe" id="importe">
+                                            <p>Quiero que mi aporte mensual sea de:</p>
+                                            <div class="donate-now mercadopago" id="mercadopago-prices">
+                                                <input onClick="updateContribuirButton('$350', 'https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c938084750df22101753df76b1d35ba', 'EMOJIS/me importa.png')" class="donate-input" type="radio" id="a350" name="amount" />
+                                                <label for="a350">$350</label>
+                                                <input onClick="updateContribuirButton('$500', 'https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c938084750df22101753df76b1d35ba', 'EMOJIS/groso.png')" class="donate-input" type="radio" id="a500" name="amount" />
+                                                <label for="a500">$500</label>
+                                                <input onClick="updateContribuirButton('$1000', 'https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c938084750df22101753df76b1d35ba', 'EMOJIS/reine.png')" class="donate-input" type="radio" id="a1000" name="amount" />
+                                                <label  for="a1000">$1000</label>
+                                                <input onClick="updateContribuirButton('OTRO', 'https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c938084750df22101753df76b1d35ba', 'EMOJIS/idea.png')" class="donate-input" type="radio" id="other" name="amount" />
+                                                <label for="other">OTRO</label>
+                                            </div>
+
+                                            <div class="donate-now paypal hide-buttons" id="paypal-prices">
+                                                <input onClick="updateContribuirButton('USD 5', 'https://www.paypal.com/paypalme/ihumai', 'EMOJIS/me importa.png')" class="donate-input" type="radio" id="usd5" name="amount" />
+                                                <label for="usd5">USD 5</label>
+                                                <input onClick="updateContribuirButton('USD 10', 'https://www.paypal.com/paypalme/ihumai', 'EMOJIS/groso.png')" class="donate-input" type="radio" id="usd10" name="amount" />
+                                                <label for="usd10">USD 10</label>
+                                                <input onClick="updateContribuirButton('USD 15', 'https://www.paypal.com/paypalme/ihumai', 'EMOJIS/reine.png')" class="donate-input" type="radio" id="usd15" name="amount" />
+                                                <label for="usd15">USD 15</label>
+                                                <input onClick="updateContribuirButton('OTRO', 'https://www.paypal.com/paypalme/ihumai', 'EMOJIS/idea.png')" class="donate-input" type="radio" id="other-usd" name="amount" />
+                                                <label for="other-usd">OTRO</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="descripcion col l3">
+                                        <img id="descripcion-img" src="EMOJIS\barbijo.png" alt="">
+                                        <h1 id="descripcion">Importe</h1>
+                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                            Tempore dolor sed minus dolores nobis quis, sequi iure,
+                                            voluptatibus tempora quia, officia ut modi quod distinctio odit!
+                                            Asperiores odit et reprehenderit!</p>
+                                    </div>
+                                </div>
+                                <div class="contribuir">
+                                    <div class="contribuir__buttons">
+                                        <button><a id="contribuir-button" href="" target="_blank" href=""
+                                                class="button">CONTRIBUIR</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="card"></div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </body>
+        </div>
+    </section>
+
+    <div id="Footer"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Footer").load("/footer.html");
+        });
+    </script>
+
+    <!--  Scripts-->
+    <script src="https://kit.fontawesome.com/04d494b3e0.js" crossorigin="anonymous"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+
+    <!--JS Particulas.js-->
+    <script src="js/particles.min.js"></script>
+    <script src="js/particulas.js"></script>
+
+    <!--Polyfill-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+
 </html>

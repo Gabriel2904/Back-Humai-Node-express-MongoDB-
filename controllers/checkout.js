@@ -13,8 +13,8 @@ const merPa = async (req, res) => {
     let preference = {
       items: [
         {
-          title: "Mi producto",
-          unit_price: 2500,
+          title: req.body.title,
+          unit_price: parseInt(req.body.price),
           quantity: 1,
         },
       ],
