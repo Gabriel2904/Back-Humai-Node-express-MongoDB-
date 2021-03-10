@@ -13,9 +13,22 @@ const merPa = async (req, res) => {
     let preference = {
       items: [
         {
+          reason: "Holo",
           title: req.body.title,
           unit_price: parseInt(req.body.price),
+          currency_id: "ARS",
           quantity: 1,
+          auto_recurring: {
+            frequency: "1",
+            frequency_type: "months",
+            transaction_amount: parseInt(req.body.price),
+            currency_id: "ARS",
+            repetitions: "12",
+            free_trial: {
+              frequency_type: "months",
+              frequency: "1",
+            },
+          },
         },
       ],
     };
