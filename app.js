@@ -18,6 +18,7 @@ const cursosRouter = require("./routes/cursos");
 const docentesRouter = require("./routes/docentes");
 const usersRouter = require("./routes/users");
 const checkoutRouter = require("./routes/checkout");
+const suscripcionesRouter = require("./routes/suscripciones")
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use("/cursos", cursosRouter);
 app.use("/docentes", docentesRouter);
 app.use("/users", usersRouter);
 app.use("/checkout", checkoutRouter);
+app.use("/suscripciones", suscripcionesRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

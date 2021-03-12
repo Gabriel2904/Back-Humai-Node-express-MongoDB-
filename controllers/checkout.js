@@ -15,7 +15,7 @@ const merPa = async (req, res) => {
         {
           reason: "Holo",
           title: req.body.title,
-          unit_price: parseInt(req.body.price),
+          unit_price: 100,
           currency_id: "ARS",
           quantity: 1,
           auto_recurring: {
