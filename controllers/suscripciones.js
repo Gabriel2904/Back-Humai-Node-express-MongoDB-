@@ -15,7 +15,7 @@ const merPa = async (req, res) => {
       //email del usuario comprador
       reason: "prueba de subscripción",
       external_reference: "",
-      back_url: "https://ihum.ai/",
+      back_url: "https://ihum.ai/gracias",
       //si se completa el pago
       auto_recurring: {
         //objeto para crear la subscripción
@@ -28,6 +28,14 @@ const merPa = async (req, res) => {
         //precio de la suscripción
         currency_id: "ARS",
         //moneda a cobrar
+      },
+      free_trial: {
+        //prueba gratuita
+        frequency_type: "months",
+        //tipo de frecuencia
+        //1 vez al mes
+        frequency: "1",
+        //frecuencia de prueba
       },
     };
 
